@@ -1,6 +1,6 @@
 # p3projects
 
-Classes
+**- Classes**
 
 O projeto de programação orientada à objeto será a implementação de um sistema
 de cinema, o projeto deve ter as seguintes classes(todas as classes devem ser
@@ -13,7 +13,7 @@ todos os atributos private e todos os métodos public):
 ● Bilhete;
 ● Compra.
 
-Usuário
+**- Usuário**
 
 ● A classe de usuário representa quem está comprando os bilhetes online, este
 usuário deve ter os seguintes atributos: user, CPF, senha, idade, sexo, email,
@@ -21,7 +21,7 @@ nome do cartão, número do cartão e código verificador do cartão; Além dist
 o usuário pode realizar, alterar ou cancelar uma compra. A classe de compra
 será explanada a seguir.
 
-Filme e bilhete
+**- Filme e bilhete**
 
 ● Filme - É a classe que representa o filme exibido na sessão da sala, ela deve
 ter os seguintes atributos: nome, duração, sinopse, valor.
@@ -29,7 +29,7 @@ ter os seguintes atributos: nome, duração, sinopse, valor.
 sessão, filme, valor(o valor é calculado baseado no filme e na sala escolhidos),
 cadeira comprada;
 
-Compra
+**- Compra**
 
 ● A classe compra é a classe que contém as compras que podem ser realizadas, a
 compra pode conter itens como pipoca, refrigerante, chocolate ou qualquer outro
@@ -45,13 +45,13 @@ dentro da sessão, o usuário também pode comprar vários bilhetes, caso seja
 comprado o sistema dará sugestões de cadeiras que estejam juntas para que todos
 possam se sentar juntos.
 
-Sala
+**- Sala**
 
 ● A classe de sala irá compor uma lista de sessões, a lista têm um tamanho fixo com
 uma grade de horário, caso não exista uma sessão em algum horário, aquela sessão
 será registrada como nula e não irá aparecer para o usuário;
 
-Sessão
+**- Sessão**
 
 ● A sessão deve conter o filme exibido juntamente com as cadeiras disponíveis para
 compras, as cadeiras devem ser implementadas de acordo com a seguir sendo que
