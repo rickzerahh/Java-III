@@ -17,16 +17,8 @@ public class Usuario {
     private String nomeCartao;
     private String codigoVerificador;
 
-    public Usuario(int cpf, String user, String senha, int idade, char sexo, String email, String numeroCartao, String nomeCartao, String codigoVerificador){
-        this.cpf = cpf;
+    public Usuario(String user){
         this.user = user;
-        this.senha = senha;
-        this.idade = idade;
-        this.sexo = sexo;
-        this.email = email;
-        this.numeroCartao = numeroCartao;
-        this.nomeCartao = nomeCartao;
-        this.codigoVerificador = codigoVerificador;
     }
 
     public int getCpf(){
