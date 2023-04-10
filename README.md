@@ -1,58 +1,23 @@
-# p3projects
+# Programação Orientada a Objetos em Java ( POO )
 
-**- Classes**
+**(BR)** A programação orientada a objetos é um paradigma de programação que se baseia na organização de código em torno de objetos, que são representações de entidades do mundo real com suas características (atributos) e comportamentos (métodos). Java é uma linguagem de programação amplamente utilizada que suporta fortemente a programação orientada a objetos.
 
-O projeto de programação orientada à objeto será a implementação de um sistema
-de cinema, o projeto deve ter as seguintes classes(todas as classes devem ser
-implementadas com seus gets e sets e seus respectivos construtores e por padrão
-todos os atributos private e todos os métodos public):
-● Usuário;
-● Sala;
-● Seção;
-● Filme;
-● Bilhete;
-● Compra.
+Este repositório no GitHub é dedicado ao estudo especializado em programação orientada a objetos em Java. O objetivo é fornecer um material completo e abrangente para o estudo dessa abordagem de programação em Java, abordando os principais conceitos, técnicas e melhores práticas.
 
-**- Usuário**
+**(EN)** Object-oriented programming is a programming paradigm that is based on organizing code around objects, which are representations of real-world entities with their characteristics (attributes) and behavior (methods). Java is a widely used programming language that strongly supports object-oriented programming.
 
-● A classe de usuário representa quem está comprando os bilhetes online, este
-usuário deve ter os seguintes atributos: user, CPF, senha, idade, sexo, email,
-nome do cartão, número do cartão e código verificador do cartão; Além disto
-o usuário pode realizar, alterar ou cancelar uma compra. A classe de compra
-será explanada a seguir.
+This repository on GitHub is dedicated to the specialized study of object-oriented programming in Java. The objective is to provide a complete and comprehensive material for the study of this programming approach in Java, covering the main concepts, techniques and best practices.
 
-**- Filme e bilhete**
+_Tópicos a serem estudados_
 
-● Filme - É a classe que representa o filme exibido na sessão da sala, ela deve
-ter os seguintes atributos: nome, duração, sinopse, valor.
-● Bilhete - A classe bilhete irá conter as seguintes informações: user, CPF, sala,
-sessão, filme, valor(o valor é calculado baseado no filme e na sala escolhidos),
-cadeira comprada;
+_________________________
 
-**- Compra**
+**Aqui estão alguns dos principais tópicos que serão abordados neste repositório:**
 
-● A classe compra é a classe que contém as compras que podem ser realizadas, a
-compra pode conter itens como pipoca, refrigerante, chocolate ou qualquer outro
-item que esteja disponível(para este projeto não vamos trabalhar com estoque de
-itens, suponha que o estoque para os itens vendidos seja infinito), e deve ter um ou
-mais bilhetes. O método de compra de bilhetes deve ser um método a parte,
-inicialmente o usuário irá buscar pelas sessões em cada sala, cada sala deve conter
-o filme em cartaz juntamente com o horário do filme(para este projeto, não vamos
-levar em consideração a comparação do horário atual com o horário de exibição do
-filme), uma vez que a sessão da sala tenha sido escolhida o usuário pode comprar
-os bilhetes, caso ele compre apenas um bilhete ele vai escolher uma poltrona livre
-dentro da sessão, o usuário também pode comprar vários bilhetes, caso seja
-comprado o sistema dará sugestões de cadeiras que estejam juntas para que todos
-possam se sentar juntos.
-
-**- Sala**
-
-● A classe de sala irá compor uma lista de sessões, a lista têm um tamanho fixo com
-uma grade de horário, caso não exista uma sessão em algum horário, aquela sessão
-será registrada como nula e não irá aparecer para o usuário;
-
-**- Sessão**
-
-● A sessão deve conter o filme exibido juntamente com as cadeiras disponíveis para
-compras, as cadeiras devem ser implementadas de acordo com a seguir sendo que
-existem 15 colunas.
+- Conceitos fundamentais da programação orientada a objetos, como classes, objetos, herança, polimorfismo, encapsulamento, entre outros.
+- Uso de interfaces e classes abstratas em Java para implementar abstração, polimorfismo e reutilização de código.
+- Trabalho com exceções e tratamento de erros em Java.
+- Utilização de coleções e estruturas de dados em Java para armazenar e manipular conjuntos de objetos.
+- Princípios de design orientado a objetos, como princípios SOLID e boas práticas de desenvolvimento orientado a objetos.
+- Uso de recursos avançados em Java, como reflexão, anotações, generics, entre outros.
+- Programação orientada a objetos avançada, como padrões de projeto, programação concorrente, entre outros.
