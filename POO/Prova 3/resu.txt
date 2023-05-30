@@ -1,0 +1,282 @@
+**CLASSE OPERACOES:**
+
+```
+package prova;
+
+
+/*
+ - Double media;
+ - Void presenca;
+ */
+
+
+public interface Operacoes{
+    double media();
+    void presenca();
+}
+```
+
+**CLASSE USER:**
+
+```
+package prova;
+
+
+/*
+ - Nome - String;
+ - Idade - Inteiro;
+ - A classe será base para o Aluno e o Professor.
+ */
+
+
+public abstract class User {
+    protected String nome;
+    protected int idade;
+   
+    public User(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+
+    /*
+    - Para alunos ele imprimirá “está vendo aula”;
+    - Para professor irá imprimir “está dando aula para:” em seguida o nome dos alunos;
+     */
+   
+    public abstract void atividade();
+}
+```
+
+**CLASSE ALUNO:**
+
+```
+package prova;
+
+
+public class Aluno extends User implements Operacoes {
+    private String curso;
+    private String matricula;
+    private double[] notas;
+    private boolean[] presencas;
+    private boolean status;
+   
+    public Aluno(String nome, int idade, String curso, String matricula) {
+        super(nome, idade);
+        this.curso = curso;
+        this.matricula = matricula;
+        this.notas = new double[3];
+        this.presencas = new boolean[20];
+        this.status = true;
+    }
+   
+    /*
+      Média - Caso o aluno tenha mais de 16 faltas imprima “reprovado por falta” e retorne -1,
+      caso o aluno tenha menos de 3 notas ele notificará que o aluno não tem notas o suficiente e
+      retorne -1, caso contrário calcule a média entre as 3 notas, imprima-a e caso seja maior ou
+      igual a 7 imprima “aprovado por média” e retorne a nota, caso seja maior ou igual a 5
+      imprima “aprovado”, caso contrário imprima “reprovado” e retorne a nota;
+    */
+
+
+    @Override
+    public double media() {
+        int faltas = 0;
+        int notasValidas = 0;
+        double somaNotas = 0;
+       
+        for (boolean presenca : presencas) {
+            if (!presenca) {
+                faltas++;
+            }
+        }
+       
+        if (faltas > 5) {
+            System.out.println("Reprovado por falta");
+            return -1;
+        }
+       
+        for (double nota : notas) {
+            if (nota != 0) {
+                notasValidas++;
+                somaNotas += nota;
+            }
+        }
+       
+        if (notasValidas < 3) {
+            System.out.println("Aluno não tem notas suficientes");
+            return -1;
+        }
+       
+        double media = somaNotas / notasValidas;
+        System.out.println("Média: " + media);
+       
+        if (media >= 7) {
+            System.out.println("Aprovado por média");
+        } else if (media >= 5) {
+            System.out.println("Aprovado");
+        } else {
+            System.out.println("Reprovado");
+        }
+       
+        return media;
+    }
+   
+    /*
+    Presença - Imprima o número de faltas e de presenças do aluno.
+    */
+
+
+    @Override
+    public void presenca() {
+        int faltas = 0;
+        int presencas = 0;
+       
+        for (boolean presenca : this.presencas) {
+            if (presenca) {
+                presencas++;
+            } else {
+                faltas++;
+            }
+        }
+       
+        System.out.println("Faltas: " + faltas);
+        System.out.println("Presenças: " + presencas);
+    }
+}
+```
+
+**CLASSE PROFESSOR:**
+
+```
+package prova;
+import java.util.Random;
+
+
+/*
+ - Curso - String;
+ - Matricula - String;
+ - Turma - um vetor de objetos do tipo Aluno com 10 posições;
+ */
+
+
+ public class Professor extends User implements Operacoes {
+    private String curso;
+    private String matricula;
+    private Aluno[] turma;
+   
+    public Professor(String nome, int idade, String curso, String matricula) {
+        super(nome, idade);
+        this.curso = curso;
+        this.matricula = matricula;
+        this.turma = new Aluno[10];
+    }
+   
+    /*
+     Média - Calcule a média da turma inteira; Caso algum aluno não tenha alguma nota lance
+     uma exceção dizendo que a turma ainda não foi finalizada;
+     */
+
+
+    @Override
+    public double media() {
+        double somaMedias = 0;
+        int alunosComNotas = 0;
+       
+        for (Aluno aluno : turma) {
+            if (aluno != null) {
+                double mediaAluno = aluno.media();
+               
+                if (mediaAluno != -1) {
+                    somaMedias += mediaAluno;
+                    alunosComNotas++;
+                } else {
+                    throw new IllegalStateException("Turma ainda não foi finalizada");
+                }
+            }
+        }
+       
+        double mediaTurma = somaMedias / alunosComNotas;
+        System.out.println("Média da turma: " + mediaTurma);
+       
+        return mediaTurma;
+    }
+
+
+    /*
+     Presença - Este método irá simular a presença da turma, importe a biblioteca import
+     java.util.Random, crie uma instância da classe com Random random = new Random(); e use
+     o seguinte comando double numero random.nextDouble(); o comando irá retornar um
+     número aleatório entre 0 e 1, caso este número for maior ou igual à 0,8 atribua falta ao
+     aluno, caso não, atribua presença.
+     */
+   
+    @Override
+    public void presenca() {
+        Random random = new Random();
+       
+        for (Aluno aluno : turma) {
+            if (aluno != null) {
+                random.nextDouble();
+                aluno.presenca();
+            }
+        }
+    }
+}
+```
+
+**CLASSE COORDENADOR:**
+
+```
+package prova;
+public class Coordenador extends Professor {
+
+
+    // - Horário de atendimento - String;
+
+
+    private String horarioAtendimento;
+   
+    public Coordenador(String nome, int idade, String curso, String matricula, String horarioAtendimento) {
+        super(nome, idade, curso, matricula);
+        this.horarioAtendimento = horarioAtendimento;
+    }
+   
+    /*
+     Solicitação aluno - O método recebe um aluno como parâmetro, caso o aluno em questão
+     esteja ativo set ele como inativo, e caso contrário set ele como ativo;
+     */
+
+
+    public void solicitacaoAluno(Aluno aluno) {
+        if (aluno.status) {
+            aluno.status = false;
+        } else {
+            aluno.status = true;
+        }
+    }
+   
+    /*
+     Remover turma - O método recebe um aluno e um professor, caso o aluno esteja no vetor de
+     turma do professor, remova ele, caso contrário retorne uma exceção dizendo que o aluno
+     não está presente na turma.
+     */
+
+
+    public void removerTurma(Aluno aluno, Professor professor) {
+        boolean alunoPresente = false;
+       
+        for (int i = 0; i < professor.turma.length; i++) {
+            if (professor.turma[i] == aluno) {
+                professor.turma[i] = null;
+                alunoPresente = true;
+                break;
+            }
+        }
+       
+        if (!alunoPresente) {
+            throw new IllegalArgumentException("Aluno não está presente na turma");
+        }
+    }
+}
+```
